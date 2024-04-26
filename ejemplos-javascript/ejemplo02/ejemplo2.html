@@ -18,6 +18,9 @@
     <span class="resultadoSumaClase"></span>
     <span class="resultadoSumaClase"></span>
     <span class="resultadoSumaClase"></span>
+    <span class="resultadoSumaClase"></span>
+    <span class="resultadoSumaClase"></span>
+
     <p id="resultadoResta"></p>
 
     <script type="text/javascript" charset="utf-8">
@@ -34,7 +37,7 @@
  es: " + c + "</b>";
       document.getElementById("resultadoResta").innerText = "<b>La diferencia de valores\
  es: " + d + "</b>";
-
+// La siguiente línea de código asigna a la variable 'spans' todos los elementos del documento HTML que tienen la clase CSS "resultadoSumaClase" donde puede traer de cero a muchos elementos de la lista.
       spans = document.getElementsByClassName("resultadoSumaClase");
       for (var i = 0; i < spans.length; i++) {
         document.getElementsByClassName("resultadoSumaClase")[i].innerHTML = "<b>La diferencia de valores\
