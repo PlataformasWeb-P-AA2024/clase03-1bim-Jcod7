@@ -1,36 +1,49 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Configuración del documento -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Demo Jquery</title>
-  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    
+    <!-- Inclusión de jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
   </head>
   <body>
-      <h1>Ejemplo de Uso de Jquery</h1>
-      <p id="mensajeFinal">
-      </p>
+      <!-- Encabezado -->
+      <h1>Ejemplo de Uso de jQuery</h1>
+      
+      <!-- Párrafo donde se mostrará la información -->
+      <p id="mensajeFinal"></p>
+      
+      <!-- Botón para obtener información -->
       <button type="submit" id="obtenerInformacion">Obtener información</button>
+      
+      <!-- Botón para limpiar la información mostrada -->
       <button type="submit" id="limpiarInformacion">Limpiar información</button>
   </body>
   <script>
     $(document).ready(function() {
+      // URL del recurso JSON que se va a solicitar
       var url = "https://pkgstore.datahub.io/core/continent-codes/continent-codes_json/data/60d6baef1250bc2b01fd0148dccca518/continent-codes_json.json";
-      $( "#obtenerInformacion" ).click(function() {
-            $.ajax({
-              dataType: 'json',
-              url: url 
-            }).then(function(data) {
-              for(var i=0; i<data.length; i++){
-                console.log(data[i]);
-                console.log(data[i].Code);
-                console.log(data[i].Name);
-                $('#mensajeFinal').append("<p> <b>Código:</b> "+ data[i].Code + " <b>Nombre:</b> " + data[i].Name + "</p>");
-              }
-            });      
-      });
       
+      // Manejo del evento click del botón 'obtenerInformacion'
+      $( "#obtenerInformacion" ).click(function() {
+          // Realización de una solicitud AJAX para obtener los datos del JSON
+          $.ajax({
+            dataType: 'json',
+            url: url 
+          }).then(function(data) {
+            // Iteración sobre los datos obtenidos y mostrando cada elemento en el párrafo 'mensajeFinal'
+            for(var i=0; i<data.length; i++){
+              $('#mensajeFinal').append("<p> <b>Código:</b> "+ data[i].Code + " <b>Nombre:</b> " + data[i].Name + "</p>");
+            }
+          });      
+      });
+    
+      // Manejo del evento click del botón 'limpiarInformacion'
       $( "#limpiarInformacion" ).click(function() {
+          // Vaciar el contenido del párrafo 'mensajeFinal'
           $('#mensajeFinal').empty();
       });
     });
